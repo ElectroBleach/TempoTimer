@@ -15,3 +15,5 @@ After filling in the required fields, users press start to begin the auditory si
 
 #### Issues? Bugs?
 To report bugs, please refer to our JIRA bug tracking page that can be found[ HERE.](ec2-13-58-202-28.us-east-2.compute.amazonaws.com:8080/ " HERE.")
+If hyperlink is unavailable, paste this into your search bar:
+ec2-13-58-202-28.us-east-2.compute.amazonaws.com:8080/
