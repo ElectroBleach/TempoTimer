@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".tt">
+
+
+    <ListView
+        android:id="@+id/splitList"
+        android:layout_width="155dp"
+        android:layout_height="331dp"
+        android:layout_marginLeft="88dp"
+        android:layout_marginBottom="72dp"
+        android:divider="@color/black"
+        android:dividerHeight="1dp"
+        android:scrollbarThumbVertical="@drawable/gray_scroll_style"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/add"></ListView>
+
+    <ListView
+        android:id="@+id/debugList"
+        android:layout_width="118dp"
+        android:layout_height="214dp"
+        android:layout_marginLeft="248dp"
+        android:layout_marginBottom="120dp"
+        android:divider="@color/black"
+        android:dividerHeight="1dp"
+        android:scrollbarThumbVertical="@drawable/gray_scroll_style"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/add"></ListView>
+
+
+    <TextView
+        android:id="@+id/tempoBackground"
+        android:layout_width="129dp"
+        android:layout_height="34dp"
+        android:layout_marginBottom="32dp"
+        android:background="@color/button_gray"
+        app:layout_constraintBottom_toBottomOf="@+id/tempoMilliTens"
+        app:layout_constraintStart_toStartOf="@+id/tempoSeconds" />
+
+    <TextView
+        android:id="@+id/tempoBackground2"
+        android:layout_width="129dp"
+        android:layout_height="103dp"
+        android:background="@color/button_gray"
+        app:layout_constraintBottom_toBottomOf="@+id/length"
+        app:layout_constraintEnd_toEndOf="@+id/tempoBackground" />
+
+    <Spinner
+        android:id="@+id/length"
+        android:layout_width="109dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="72dp"
+        android:background="@color/button_gray"
+        android:gravity="center"
+        app:layout_constraintLeft_toRightOf="@id/goalTime"
+        app:layout_constraintTop_toBottomOf="@id/resetbtn" />
+
+    <Spinner
+        android:id="@+id/course"
+        android:layout_width="109dp"
+        android:layout_height="39dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="32dp"
+        android:background="@color/button_gray"
+        android:gravity="center"
+        app:layout_constraintLeft_toRightOf="@id/goalTime"
+        app:layout_constraintTop_toBottomOf="@id/resetbtn" />
+
+    <Spinner
+        android:id="@+id/tempoSeconds"
+        android:layout_width="43dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="32dp"
+        android:background="@color/button_gray"
+        app:layout_constraintStart_toEndOf="@+id/milliInput"
+        app:layout_constraintTop_toBottomOf="@+id/length" />
+
+    <Spinner
+        android:id="@+id/tempoMilliTens"
+        android:layout_width="43dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="32dp"
+        android:background="@color/button_gray"
+        app:layout_constraintStart_toEndOf="@+id/tempoSeconds"
+        app:layout_constraintTop_toBottomOf="@+id/length" />
+
+    <Spinner
+        android:id="@+id/tempoMilliHundreds"
+        android:layout_width="43dp"
+        android:layout_height="45dp"
+        android:background="@color/button_gray"
+        app:layout_constraintStart_toEndOf="@+id/tempoMilliTens"
+        app:layout_constraintTop_toTopOf="@+id/tempoMilliTens" />
+
+
+        <TextView
+            android:id="@+id/display"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="92dp"
+            android:gravity="center"
+            android:text="00:00:00"
+            android:textColor="#000000"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/startbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="148dp"
+            android:background="@color/button_gray"
+            android:text="START"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <Button
+            android:id="@+id/pausebtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="160dp"
+            android:layout_marginLeft="160dp"
+            android:layout_marginTop="148dp"
+            android:background="@color/button_gray"
+            android:text="PAUSE"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/resetbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="256dp"
+            android:layout_marginLeft="256dp"
+            android:layout_marginTop="148dp"
+            android:background="@color/button_gray"
+            android:text="RESET"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/backHomebtn"
+        android:layout_width="58dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="36dp"
+        android:background="@color/dark_maroon"
+        android:text="Back"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/add"
+        android:layout_width="71dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="308dp"
+        android:layout_marginRight="148dp"
+        android:background="@color/dark_maroon"
+        android:text="Add"
+        android:textColor="@color/white"
+        app:layout_constraintRight_toLeftOf="@id/resetbtn"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/remove"
+        android:layout_width="71dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="308dp"
+        android:layout_marginRight="57dp"
+        android:background="@color/dark_maroon"
+        android:text="Remove"
+        android:textColor="@color/white"
+        app:layout_constraintRight_toLeftOf="@id/resetbtn"
+        app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/stopwatchTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="36dp"
+            android:layout_marginTop="56dp"
+            android:gravity="center"
+            android:text=" Selected mode: Tempo Timer"
+            android:textAlignment="textStart"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/credits"
+            android:layout_width="105dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text=" "
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+    <CheckBox
+        android:id="@+id/splitManual"
+        android:layout_width="150dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="4dp"
+        android:buttonTint="@color/black"
+        android:text="Input splits"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toLeftOf="@id/stopwatchTitle"
+        app:layout_constraintTop_toBottomOf="@id/add" />
+
+    <CheckBox
+        android:id="@+id/splitManualAnim"
+        android:layout_width="150dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="88dp"
+        android:buttonTint="@color/black"
+        android:text="Input splits"
+        android:textColor="@color/black"
+        android:translationY="-5dp"
+        app:layout_constraintLeft_toLeftOf="@id/stopwatchTitle"
+        app:layout_constraintTop_toBottomOf="@id/goalTime" />
+
+
+    <CheckBox
+        android:id="@+id/splitAuto"
+        android:layout_width="150dp"
+        android:layout_height="32dp"
+        android:buttonTint="@color/black"
+        android:text="Generate splits"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toLeftOf="@id/stopwatchTitle"
+        app:layout_constraintTop_toBottomOf="@id/splitManual" />
+
+    <CheckBox
+        android:id="@+id/splitAutoAnim"
+        android:layout_width="150dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="112dp"
+        android:buttonTint="@color/black"
+        android:text="Generate splits"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toLeftOf="@id/stopwatchTitle"
+        app:layout_constraintTop_toBottomOf="@id/goalTimeTitle" />
+
+    <TextView
+        android:id="@+id/goalTime"
+        android:layout_width="78dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:hint=""
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="15dp"
+        app:layout_constraintLeft_toLeftOf="@id/stopwatchTitle"
+        app:layout_constraintTop_toBottomOf="@id/startbtn" />
+
+    <TextView
+        android:id="@+id/goalTimeTitle"
+        android:layout_width="78dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:hint="Goal Time"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textColorHint="@color/black"
+        android:textSize="15dp"
+        android:visibility="invisible"
+        app:layout_constraintLeft_toLeftOf="@id/stopwatchTitle"
+        app:layout_constraintTop_toBottomOf="@id/startbtn" />
+
+    <TextView
+        android:id="@+id/goalTimeTitle2"
+        android:layout_width="78dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Goal Time"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@id/stopwatchTitle"
+        app:layout_constraintTop_toBottomOf="@id/startbtn" />
+
+    <TextView
+        android:id="@+id/raceTitle"
+        android:layout_width="53dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="236dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:ems="10"
+        android:hint="Race"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textColorHint="@color/white"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tempoBackground"
+        app:layout_constraintLeft_toLeftOf="@id/stopwatchTitle"
+        app:layout_constraintTop_toTopOf="@+id/tempoBackground2" />
+
+    <TextView
+        android:id="@+id/tempoTitle2"
+        android:layout_width="48dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="236dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:ems="10"
+        android:hint="Tempo"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textColorHint="@color/white"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tempoBackground"
+        app:layout_constraintLeft_toLeftOf="@id/stopwatchTitle"
+        app:layout_constraintTop_toTopOf="@+id/tempoBackground" />
+
+    <TextView
+        android:id="@+id/splitsTitle"
+        android:layout_width="110dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="112dp"
+        android:layout_marginTop="232dp"
+        android:ems="10"
+        android:hint="Your Splits:"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@id/stopwatchTitle"
+        app:layout_constraintTop_toBottomOf="@id/startbtn" />
+
+    <TextView
+        android:id="@+id/goalDecimal"
+        android:layout_width="15dp"
+        android:layout_height="22dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="36dp"
+        android:ems="10"
+        android:hint="."
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="15dp"
+        app:layout_constraintLeft_toLeftOf="@id/stopwatchTitle"
+        app:layout_constraintTop_toBottomOf="@id/startbtn" />
+
+    <TextView
+        android:id="@+id/goalDecimal2"
+        android:layout_width="14dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="."
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="15dp"
+        app:layout_constraintLeft_toLeftOf="@id/stopwatchTitle"
+        app:layout_constraintStart_toStartOf="@+id/tempoSeconds"
+        app:layout_constraintTop_toTopOf="@+id/tempoMilliHundreds" />
+
+    <TextView
+        android:id="@+id/goalColon"
+        android:layout_width="10dp"
+        android:layout_height="21dp"
+        android:layout_marginLeft="52dp"
+        android:layout_marginTop="36dp"
+        android:ems="10"
+        android:hint=":"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="15dp"
+        app:layout_constraintLeft_toLeftOf="@id/stopwatchTitle"
+        app:layout_constraintTop_toBottomOf="@id/startbtn" />
+
+    <EditText
+        android:id="@+id/goalMilli"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:layout_marginRight="60dp"
+        android:backgroundTint="@color/black"
+        android:ems="10"
+        android:inputType="numberPassword"
+        android:text="00"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="15dp"
+        app:layout_constraintRight_toLeftOf="@id/course"
+        app:layout_constraintTop_toBottomOf="@id/goalTime" />
+
+
+    <EditText
+        android:id="@+id/goalSeconds"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:layout_marginRight="108dp"
+        android:backgroundTint="@color/black"
+        android:ems="10"
+        android:inputType="numberPassword"
+        android:text="00"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="15dp"
+        android:textAlignment="center"
+        app:layout_constraintRight_toLeftOf="@id/course"
+        app:layout_constraintTop_toBottomOf="@id/goalTime" />
+
+
+    <EditText
+        android:id="@+id/goalMinutes"
+        android:layout_width="34dp"
+        android:layout_height="37dp"
+        android:layout_marginRight="160dp"
+        android:backgroundTint="@color/black"
+        android:ems="10"
+        android:inputType="numberPassword"
+        android:text="00"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="15dp"
+        app:layout_constraintRight_toLeftOf="@id/course"
+        app:layout_constraintTop_toBottomOf="@id/goalTime" />
+
+    <EditText
+        android:id="@+id/offset"
+        android:layout_width="162dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="48dp"
+        android:backgroundTint="@color/black"
+        android:ems="10"
+        android:hint="50 Split Offset"
+        android:inputType="numberPassword"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="15dp"
+        app:layout_constraintRight_toLeftOf="@id/length"
+        app:layout_constraintTop_toBottomOf="@id/goalTime" />
+
+
+    <EditText
+        android:id="@+id/secInput"
+        android:layout_width="81dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="128dp"
+        android:backgroundTint="@color/black"
+        android:ems="10"
+        android:hint="Sec."
+        android:inputType="numberPassword"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="15dp"
+        app:layout_constraintRight_toLeftOf="@id/length"
+        app:layout_constraintTop_toBottomOf="@id/goalTime" />
+
+    <EditText
+        android:id="@+id/milliInput"
+        android:layout_width="81dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="44dp"
+        android:backgroundTint="@color/black"
+        android:ems="10"
+        android:hint="Milli."
+        android:inputType="numberPassword"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="15dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toRightOf="@id/secInput"
+        app:layout_constraintRight_toLeftOf="@id/length"
+        app:layout_constraintTop_toBottomOf="@id/goalTime" />
+
+    <TextView
+            android:id="@+id/debugOutput"
+            android:layout_width="211dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="340dp"
+            android:text="debugOutput"
+            android:textColor="@color/black"
+            android:visibility="invisible"
+            app:layout_constraintLeft_toLeftOf="@id/length"
+            app:layout_constraintTop_toBottomOf="@id/course" />
+
+        <TextView
+            android:id="@+id/debugOutput2"
+            android:layout_width="211dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="380dp"
+            android:text="debugOutput2"
+            android:textColor="@color/black"
+            android:visibility="invisible"
+            app:layout_constraintLeft_toLeftOf="@id/length"
+            app:layout_constraintTop_toBottomOf="@id/course" />
+
+    <TextView
+        android:id="@+id/courseOutput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="104dp"
+        android:layout_marginBottom="16dp"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/debugOutput"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
