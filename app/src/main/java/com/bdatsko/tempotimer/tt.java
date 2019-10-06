@@ -3,10 +3,13 @@ package com.bdatsko.tempotimer;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Handler;
 import android.os.SystemClock;
@@ -30,6 +33,7 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -57,17 +61,23 @@ public class tt extends AppCompatActivity {
     private Context context;
     RelativeLayout loadingSplash;
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         context = this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tt);
+
+
+
         handler = new Handler();
         display = (TextView) findViewById(R.id.display);
         start = (Button) findViewById(R.id.startbtn);
         pause = (Button) findViewById(R.id.pausebtn);
         reset = (Button) findViewById(R.id.resetbtn);
-        back = (Button) findViewById(R.id.backHomebtn);
+        back = (Button) findViewById(R.id.backButton);
         add = (Button) findViewById(R.id.add);
         remove = (Button) findViewById(R.id.remove);
         goalMinutes = (EditText) findViewById(R.id.goalMinutes);
@@ -129,8 +139,45 @@ public class tt extends AppCompatActivity {
         final Spinner length = (Spinner) findViewById(R.id.length);
 
         //race course adapter
+
+
+
+        /*
         final ArrayAdapter<String> courseAdapt = new ArrayAdapter<>(tt.this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.course));
+        courseAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        course.setAdapter(courseAdapt);
+        */
+
+
+
+//race course adapter
+        ArrayAdapter<String> courseAdapt = new ArrayAdapter<String>(tt.this,
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.course)) {
+
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View v = super.getView(position, convertView, parent);
+
+                Typeface externalFont = Typeface.createFromAsset(tt.this.getAssets(), "fonts/helveticabold.ttf");
+                ((TextView) v).setTypeface(externalFont);
+                ((TextView) v).setGravity(Gravity.CENTER);
+
+                return v;
+            }
+
+
+            public View getDropDownView(int position,  View convertView,  ViewGroup parent) {
+                View v =super.getDropDownView(position, convertView, parent);
+
+                Typeface externalFont=Typeface.createFromAsset(getAssets(), "fonts/helveticabold.ttf");
+                ((TextView) v).setTypeface(externalFont);
+                v.setBackgroundColor(getResources().getColor(R.color.spinnercolor));
+
+                return v;
+            }
+        };
+
+
         courseAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         course.setAdapter(courseAdapt);
 
@@ -138,51 +185,18 @@ public class tt extends AppCompatActivity {
         splitManual.setChecked(true);
         splitMode = 1;
 
-        splitManualAnim.setOnClickListener(new View.OnClickListener() {
+        splitManual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(splitManualAnim.isChecked()) {
+                if(splitManual.isChecked()) {
                     splitMode = 1;
-                    splitManualAnim.setChecked(true);
-                    splitAutoAnim.setChecked(false);
-                    splitOffset.setVisibility(View.GONE);
-                    splitOffset.setEnabled(true);
+                    splitAuto.setChecked(false);
                     secondsInput.setVisibility(View.VISIBLE);
-                    secondsInput.setEnabled(true);
                     milliInput.setVisibility(View.VISIBLE);
-                    milliInput.setEnabled(true);
                     add.setVisibility(View.VISIBLE);
                     remove.setVisibility(View.VISIBLE);
-                    scaleUp();
-                    add.setEnabled(true);
-                    remove.setEnabled(true);
-                    arrayList.clear();
-                    adapter.notifyDataSetChanged();
-
-                    checkAnimDown();
-
-
-                    final Handler animDown = new Handler();
-                    animDown.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            splitManualAnim.clearAnimation();
-                            splitAutoAnim.clearAnimation();
-
-                            splitManualAnim.setVisibility(View.INVISIBLE);
-                            splitAutoAnim.setVisibility(View.INVISIBLE);
-                            splitManualAnim.setEnabled(false);
-                            splitAutoAnim.setEnabled(false);
-
-                            splitManual.setVisibility(View.VISIBLE);
-                            splitAuto.setVisibility(View.VISIBLE);
-                            splitManual.setEnabled(true);
-                            splitAuto.setEnabled(true);
-
-                            splitManual.setChecked(true);
-                            splitAuto.setChecked(false);
-                        }
-                    }, 500);
+                    splitOffset.setVisibility(View.GONE);
+                    splitOffset.setEnabled(false);
 
                 }
             }
@@ -193,80 +207,131 @@ public class tt extends AppCompatActivity {
             public void onClick(View view) {
                 if(splitAuto.isChecked()) {
                     splitMode = 2;
-                    splitAutoAnim.setChecked(true);
-                    splitManualAnim.setChecked(false);
+                    splitManual.setChecked(false);
                     splitOffset.setVisibility(View.VISIBLE);
+                    secondsInput.setVisibility(View.GONE);
+                    milliInput.setVisibility(View.GONE);
+                    add.setVisibility(View.GONE);
+                    remove.setVisibility(View.GONE);
                     splitOffset.setEnabled(true);
-                    secondsInput.setVisibility(View.INVISIBLE);
-                    secondsInput.setEnabled(false);
-                    milliInput.setVisibility(View.INVISIBLE);
-                    milliInput.setEnabled(false);
-                    splitOffset.setHint("50 Split Offset (sec.)");
-                    scaleDown();
-                    add.setVisibility(View.INVISIBLE);
-                    add.setEnabled(false);
-                    remove.setVisibility(View.INVISIBLE);
-                    remove.setEnabled(false);
-                    arrayList.clear();
-                    adapter.notifyDataSetChanged();
-
-                    checkAnimUp();
-
-                    final Handler animUp = new Handler();
-                    animUp.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            // Do something after 5s = 5000ms
-                            splitManual.clearAnimation();
-                            splitAuto.clearAnimation();
-
-                            splitManual.setVisibility(View.INVISIBLE);
-                            splitAuto.setVisibility(View.INVISIBLE);
-                            splitManual.setEnabled(false);
-                            splitAuto.setEnabled(false);
-
-                            splitManualAnim.setVisibility(View.VISIBLE);
-                            splitAutoAnim.setVisibility(View.VISIBLE);
-                            splitManualAnim.setEnabled(true);
-                            splitAutoAnim.setEnabled(true);
-
-
-                        }
-                    }, 500);
 
                 }
             }
         });
 
-        //ArrayAdapter adapter = new ArrayAdapter()
+
 
         course.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if(course.getSelectedItem().toString().trim().equals("Course↓")) {
-                    ArrayAdapter<String> raceAdapt = new ArrayAdapter<>(tt.this,
-                            android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.courseDefault));
+                    ArrayAdapter<String> raceAdapt = new ArrayAdapter<String>(tt.this,
+                            android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.courseDefault)) {
+
+                        public View getView(int position, View convertView, ViewGroup parent) {
+                            View v = super.getView(position, convertView, parent);
+
+                            Typeface externalFont = Typeface.createFromAsset(tt.this.getAssets(), "fonts/helveticabold.ttf");
+                            ((TextView) v).setTypeface(externalFont);
+                            ((TextView) v).setTextColor(getResources().getColor(R.color.yellowbg));
+                            ((TextView) v).setGravity(Gravity.CENTER);
+
+                            return v;
+                        }
+
+                        public View getDropDownView(int position,  View convertView,  ViewGroup parent) {
+                            View v =super.getDropDownView(position, convertView, parent);
+
+                            Typeface externalFont=Typeface.createFromAsset(getAssets(), "fonts/helveticabold.ttf");
+                            ((TextView) v).setTypeface(externalFont);
+                            v.setBackgroundColor(getResources().getColor(R.color.spinnercolor));
+
+                            return v;
+                        }
+                    };
+
                     raceAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     length.setAdapter(raceAdapt);
                 }
                 if(course.getSelectedItem().toString().trim().equals("SCY")) {
-                    ArrayAdapter<String> raceAdapt = new ArrayAdapter<>(tt.this,
-                            android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.raceLengthY));
+                    ArrayAdapter<String> raceAdapt = new ArrayAdapter<String>(tt.this,
+                            android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.raceLengthY)) {
+
+                        public View getView(int position, View convertView, ViewGroup parent) {
+                            View v = super.getView(position, convertView, parent);
+
+                            Typeface externalFont = Typeface.createFromAsset(tt.this.getAssets(), "fonts/helveticabold.ttf");
+                            ((TextView) v).setTypeface(externalFont);
+                            ((TextView) v).setGravity(Gravity.CENTER);
+
+                            return v;
+                        }
+
+                        public View getDropDownView(int position,  View convertView,  ViewGroup parent) {
+                            View v =super.getDropDownView(position, convertView, parent);
+
+                            Typeface externalFont=Typeface.createFromAsset(getAssets(), "fonts/helveticabold.ttf");
+                            ((TextView) v).setTypeface(externalFont);
+                            v.setBackgroundColor(getResources().getColor(R.color.spinnercolor));
+
+                            return v;
+                        }
+                    };
                     raceAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     length.setAdapter(raceAdapt);
                     courseValue = 1;
                 }
                 if(course.getSelectedItem().toString().trim().equals("SCM")) {
-                    ArrayAdapter<String> raceAdapt = new ArrayAdapter<>(tt.this,
-                            android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.raceLengthY));
-                    raceAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    ArrayAdapter<String> raceAdapt = new ArrayAdapter<String>(tt.this,
+                            android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.raceLengthY)) {
+
+                        public View getView(int position, View convertView, ViewGroup parent) {
+                            View v = super.getView(position, convertView, parent);
+
+                            Typeface externalFont = Typeface.createFromAsset(tt.this.getAssets(), "fonts/helveticabold.ttf");
+                            ((TextView) v).setTypeface(externalFont);
+                            ((TextView) v).setGravity(Gravity.CENTER);
+
+                            return v;
+                        }
+
+                        public View getDropDownView(int position,  View convertView,  ViewGroup parent) {
+                            View v =super.getDropDownView(position, convertView, parent);
+
+                            Typeface externalFont=Typeface.createFromAsset(getAssets(), "fonts/helveticabold.ttf");
+                            ((TextView) v).setTypeface(externalFont);
+                            v.setBackgroundColor(getResources().getColor(R.color.spinnercolor));
+
+                            return v;
+                        }
+                    };
                     length.setAdapter(raceAdapt);
                     courseValue = 2;
                 }
                 if(course.getSelectedItem().toString().trim().equals("LCM")) {
-                    ArrayAdapter<String> raceAdapt = new ArrayAdapter<>(tt.this,
-                            android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.raceLengthM));
-                    raceAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    ArrayAdapter<String> raceAdapt = new ArrayAdapter<String>(tt.this,
+                            android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.raceLengthM)) {
+
+                        public View getView(int position, View convertView, ViewGroup parent) {
+                            View v = super.getView(position, convertView, parent);
+
+                            Typeface externalFont = Typeface.createFromAsset(tt.this.getAssets(), "fonts/helveticabold.ttf");
+                            ((TextView) v).setTypeface(externalFont);
+                            ((TextView) v).setGravity(Gravity.CENTER);
+
+                            return v;
+                        }
+
+                        public View getDropDownView(int position,  View convertView,  ViewGroup parent) {
+                            View v =super.getDropDownView(position, convertView, parent);
+
+                            Typeface externalFont=Typeface.createFromAsset(getAssets(), "fonts/helveticabold.ttf");
+                            ((TextView) v).setTypeface(externalFont);
+                            v.setBackgroundColor(getResources().getColor(R.color.spinnercolor));
+
+                            return v;
+                        }
+                    };
                     length.setAdapter(raceAdapt);
                     courseValue = 3;
                 }
@@ -281,8 +346,40 @@ public class tt extends AppCompatActivity {
 
         //tempo adapter and information
 
-        final ArrayAdapter<String> tempoAdapter = new ArrayAdapter<>(tt.this,
-                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.count));
+
+        ArrayAdapter<String> tempoAdapter = new ArrayAdapter<String>(tt.this,
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.count)) {
+
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View v = super.getView(position, convertView, parent);
+
+                Typeface externalFont = Typeface.createFromAsset(tt.this.getAssets(), "fonts/helveticabold.ttf");
+                ((TextView) v).setTypeface(externalFont);
+                ((TextView) v).setTextColor(Color.BLACK);
+                ((TextView) v).setGravity(Gravity.CENTER);
+
+                return v;
+            }
+
+            public View getDropDownView(int position,  View convertView,  ViewGroup parent) {
+                View v =super.getDropDownView(position, convertView, parent);
+
+                Typeface externalFont=Typeface.createFromAsset(getAssets(), "fonts/helveticabold.ttf");
+                ((TextView) v).setTypeface(externalFont);
+                ((TextView) v).setTextColor(Color.BLACK);
+                v.setBackgroundColor(getResources().getColor(R.color.light_gray));
+
+                return v;
+            }
+        };
+
+        //final ArrayAdapter<String> tempoAdapter = new ArrayAdapter<>(tt.this,
+        //        android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.count));
+
+
+
+
+
         tempoAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         tempoSeconds.setAdapter(tempoAdapter);
         tempoMilliTenths.setAdapter(tempoAdapter);
@@ -461,7 +558,7 @@ public class tt extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent backHome = new Intent(getApplicationContext(), mainMenu.class);
+                Intent backHome = new Intent(getApplicationContext(), menuMain.class);
 
                 startActivity(backHome);
             }
@@ -506,6 +603,7 @@ public class tt extends AppCompatActivity {
                 stopTempoLoop = 0;
                 startTempoLoop();
                 hasStarted = true;
+                display.setTextSize(45);
                 //arrayList.clear();
                 running = true;
                 startSound.start();
@@ -535,10 +633,12 @@ public class tt extends AppCompatActivity {
                 if (milliValue == 0) {
                     display.setTextColor(getResources().getColor(R.color.soft_red));
                     display.setText("Invalid goal time.");
+                    display.setTextSize(32);
                 }
                 if (splitAuto.isChecked() == false && splitManual.isChecked() == false) {
                     display.setTextColor(getResources().getColor(R.color.soft_red));
                     display.setText("Select a split mode.");
+                    display.setTextSize(32);
                     canStart = 0;
                 }
 
@@ -611,6 +711,7 @@ public class tt extends AppCompatActivity {
                 counter = 0;
                 onCreateInt = 0;
                 stopTempoLoop = 1;
+
             }
         });
 
@@ -868,7 +969,7 @@ public class tt extends AppCompatActivity {
     };
 
     public void onBackPressed() {
-        Intent home = new Intent(this,mainMenu.class);
+        Intent home = new Intent(this,menuMain.class);
         startActivity(home);
     }
 

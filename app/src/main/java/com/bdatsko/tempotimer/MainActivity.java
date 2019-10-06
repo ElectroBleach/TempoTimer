@@ -34,7 +34,7 @@ public class MainActivity extends Activity {
         start = (Button) findViewById(R.id.startbtn);
         pause = (Button) findViewById(R.id.pausebtn);
         reset = (Button) findViewById(R.id.resetbtn);
-        back = (Button) findViewById(R.id.backHomebtn);
+        back = (Button) findViewById(R.id.backButtonSW);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
 
@@ -78,7 +78,7 @@ public class MainActivity extends Activity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent backHome = new Intent(getApplicationContext(), mainMenu.class);
+                Intent backHome = new Intent(getApplicationContext(), menuMain.class);
                 startActivity(backHome);
             }
         });
@@ -110,7 +110,7 @@ public class MainActivity extends Activity {
      };
 
     public void onBackPressed() {
-        Intent home = new Intent(this,mainMenu.class);
+        Intent home = new Intent(this,menuMain.class);
         startActivity(home);
     }
 }

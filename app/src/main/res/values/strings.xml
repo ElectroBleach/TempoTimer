@@ -1,10 +1,6 @@
 <resources>
     <string name="app_name">TempoTimer</string>
-    <string name="title_activity_menu">menu</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_main_menu">mainMenu</string>
-    <string name="title_activity_tempo_timer">tempoTimer</string>
     <string name="title_activity_test">testActiv</string>
     <string name="tobugtracker">
         <a href="http://ec2-13-58-202-28.us-east-2.compute.amazonaws.com:8080/">Report bugs HERE.</a>
@@ -45,9 +41,6 @@
         <item>9</item>
     </string-array>
     <string-array name="courseDefault">
-        <item>Length</item>
-    </string-array>
-    <string-array name="autogenSplits">
         <item>Length</item>
     </string-array>
 </resources>

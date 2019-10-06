@@ -5,17 +5,31 @@
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/bgnorect"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="326dp"
+        android:layout_height="486dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="156dp"
+        android:src="@drawable/newrectangle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/display"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="260dp"
-        android:gravity="center"
-        android:text="00:00:00"
+        android:layout_width="415dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="252dp"
+        android:fontFamily="@font/libre_baskerville_bold_new"
+        android:textAlignment="center"
+        android:scaleY="1.2"
+        android:text="00:00.00"
         android:textColor="#000000"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -29,9 +43,10 @@
         android:layout_marginStart="160dp"
         android:layout_marginLeft="160dp"
         android:layout_marginTop="312dp"
-        android:background="@color/button_gray"
+        android:background="@drawable/greengradbutton"
         android:text="START"
         android:textColor="@color/white"
+        android:fontFamily="@font/roboto_medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,10 +58,11 @@
         android:layout_marginStart="160dp"
         android:layout_marginLeft="160dp"
         android:layout_marginTop="368dp"
-        android:background="@color/button_gray"
+        android:background="@drawable/yellowgradbutton"
         android:text="PAUSE"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="@font/roboto_medium"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -56,39 +72,12 @@
         android:layout_marginStart="160dp"
         android:layout_marginLeft="160dp"
         android:layout_marginTop="424dp"
-        android:background="@color/button_gray"
+        android:background="@drawable/redgradbackground"
         android:text="RESET"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/backHomebtn"
-        android:layout_width="58dp"
-        android:layout_height="38dp"
-        android:layout_marginRight="48dp"
-        android:layout_marginBottom="56dp"
-        android:background="@color/dark_maroon"
-        android:text="Back"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@id/credits"
-        app:layout_constraintRight_toLeftOf="@id/resetbtn"
-        android:visibility="gone"/>
-
-    <TextView
-        android:id="@+id/stopwatchTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="36dp"
-        android:layout_marginTop="56dp"
-        android:gravity="center"
-        android:text=" Selected mode: Stopwatch"
-        android:textAlignment="textStart"
-        android:textColor="#000000"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/credits"
@@ -99,7 +88,21 @@
         android:textColor="@color/white"
         android:textSize="15sp"
         android:textStyle="bold"
+        android:fontFamily="@font/roboto_medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="parent"/>
+
+    <Button
+        android:id="@+id/backButtonSW"
+        android:layout_width="64dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
