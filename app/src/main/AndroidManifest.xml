@@ -13,6 +13,7 @@
         <activity
             android:name=".tt"
             android:label="@string/title_activity_test"
+            android:screenOrientation="portrait"
             android:theme="@style/noAnimTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -21,6 +22,7 @@
         <activity
             android:name=".about"
             android:label="@string/title_activity_test"
+            android:screenOrientation="portrait"
             android:theme="@style/noAnimTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -29,6 +31,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main_menu"
+            android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity android:name=".menuMain">
             <intent-filter>

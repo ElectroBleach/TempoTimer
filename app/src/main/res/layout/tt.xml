@@ -11,10 +11,10 @@
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="290dp"
-        android:layout_height="186dp"
-        android:layout_marginStart="132dp"
-        android:layout_marginLeft="132dp"
+        android:layout_width="336dp"
+        android:layout_height="196dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
         android:layout_marginTop="468dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -94,8 +94,8 @@
         android:layout_width="152dp"
         android:layout_height="46dp"
         android:layout_marginTop="80dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
         android:background="@drawable/spinner"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
@@ -105,11 +105,15 @@
         android:id="@+id/course"
         android:layout_width="152dp"
         android:layout_height="46dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
         android:layout_marginTop="80dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:background="@drawable/spinner"
         android:gravity="center"
+        app:layout_constraintEnd_toStartOf="@+id/length"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/resetbtn" />
 
@@ -182,31 +186,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/startbtn"
-        android:layout_width="106dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/button"
-        android:fontFamily="@font/roboto_medium"
-        android:stateListAnimator="@null"
-        android:text="START"
-        android:textAllCaps="false"
-        android:textColor="@color/startbtn"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="@+id/display"
-        app:layout_constraintTop_toBottomOf="@+id/display" />
-
-
-    <Button
         android:id="@+id/pausebtn"
-        android:layout_width="104dp"
-        android:layout_height="57dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="@drawable/button"
         android:fontFamily="@font/roboto_medium"
@@ -215,18 +201,38 @@
         android:textAllCaps="false"
         android:textColor="@color/pausebtn"
         android:textSize="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/resetbtn"
-        app:layout_constraintHorizontal_bias="0.571"
-        app:layout_constraintStart_toEndOf="@+id/startbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/display" />
+
+    <Button
+        android:id="@+id/startbtn"
+        android:layout_width="106dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/roboto_medium"
+        android:stateListAnimator="@null"
+        android:text="START"
+        android:textAllCaps="false"
+        android:textColor="@color/startbtn"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/display" />
+
+
+
 
     <Button
         android:id="@+id/resetbtn"
         android:layout_width="112dp"
         android:layout_height="56dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginRight="28dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
         android:background="@drawable/button"
         android:fontFamily="@font/roboto_medium"
         android:stateListAnimator="@null"
@@ -253,25 +259,27 @@
 
     <Button
         android:id="@+id/add"
-        android:layout_width="71dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="228dp"
-        android:layout_marginLeft="228dp"
-        android:layout_marginTop="596dp"
+        android:layout_width="64dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="600dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:background="@drawable/purplebutton"
         android:fontFamily="@font/roboto_medium"
         android:text="Add"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/remove"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toStartOf="@+id/tempolabel"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/remove"
-        android:layout_width="70dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="596dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_width="64dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="600dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
         android:background="@drawable/purplebutton"
         android:fontFamily="@font/roboto_medium"
         android:text="Remove"
@@ -295,6 +303,8 @@
         android:id="@+id/splitManual"
         android:layout_width="150dp"
         android:layout_height="31dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="92dp"
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
@@ -303,6 +313,8 @@
         android:text="Input splits"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.172"
+        app:layout_constraintStart_toStartOf="@+id/tempolabel"
         app:layout_constraintTop_toBottomOf="@+id/length" />
 
     <CheckBox
@@ -325,6 +337,8 @@
         android:id="@+id/splitAuto"
         android:layout_width="150dp"
         android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
         android:buttonTint="@color/black"
@@ -332,6 +346,8 @@
         android:text="Generate splits"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.172"
+        app:layout_constraintStart_toStartOf="@+id/tempolabel"
         app:layout_constraintTop_toBottomOf="@id/splitManual" />
 
     <CheckBox
@@ -468,8 +484,8 @@
 
     <EditText
         android:id="@+id/offset"
-        android:layout_width="162dp"
-        android:layout_height="40dp"
+        android:layout_width="138dp"
+        android:layout_height="42dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="28dp"
         android:layout_marginRight="28dp"
@@ -483,16 +499,20 @@
         android:textColorHint="@color/black"
         android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tempolabel"
         app:layout_constraintTop_toBottomOf="@+id/splitAuto" />
 
 
     <EditText
         android:id="@+id/secInput"
-        android:layout_width="81dp"
-        android:layout_height="40dp"
+        android:layout_width="69dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginRight="88dp"
         android:backgroundTint="@color/black"
         android:ems="10"
         android:fontFamily="@font/roboto_medium"
@@ -503,18 +523,18 @@
         android:textColorHint="@color/black"
         android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.029"
-        app:layout_constraintStart_toStartOf="@+id/splitAuto"
+        app:layout_constraintHorizontal_bias="0.714"
+        app:layout_constraintStart_toStartOf="@+id/tempolabel"
         app:layout_constraintTop_toBottomOf="@+id/splitAuto" />
 
     <EditText
         android:id="@+id/milliInput"
-        android:layout_width="81dp"
-        android:layout_height="40dp"
+        android:layout_width="67dp"
+        android:layout_height="37dp"
         android:layout_marginLeft="12dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:backgroundTint="@color/black"
         android:ems="10"
         android:fontFamily="@font/roboto_medium"
@@ -566,33 +586,25 @@
         android:id="@+id/divider1"
         android:layout_width="4dp"
         android:layout_height="55dp"
-
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginTop="28dp"
         android:alpha=".86"
         android:background="@color/white"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/resetbtn"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/pausebtn"
-        app:layout_constraintTop_toTopOf="@+id/topbackground2" />
+        app:layout_constraintTop_toBottomOf="@+id/display" />
 
     <TextView
         android:id="@+id/divider"
         android:layout_width="4dp"
         android:layout_height="55dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="28dp"
         android:alpha=".86"
         android:background="@color/white"
-        app:layout_constraintEnd_toStartOf="@+id/pausebtn"
         app:layout_constraintStart_toEndOf="@+id/startbtn"
-        app:layout_constraintTop_toTopOf="@+id/topbackground2" />
+        app:layout_constraintTop_toBottomOf="@+id/display"
+        android:visibility="invisible"/>
 
     <TextView
         android:id="@+id/goalLabel"
@@ -600,7 +612,7 @@
         android:layout_height="36dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="292dp"
+        android:layout_marginTop="288dp"
         android:fontFamily="@font/libre_baskerville_bold_new"
         android:text="Goal Time"
         android:textColor="@color/black"
@@ -611,17 +623,15 @@
 
     <TextView
         android:id="@+id/tempolabel"
-        android:layout_width="169dp"
+        android:layout_width="159dp"
         android:layout_height="43dp"
-        android:layout_marginStart="220dp"
-        android:layout_marginLeft="220dp"
         android:layout_marginTop="436dp"
         android:fontFamily="@font/libre_baskerville_bold_new"
         android:text="Mode"
         android:textColor="@color/black"
         android:textSize="30dp"
         app:fontFamily="@font/libre_baskerville_bold_new"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -658,12 +668,17 @@
         android:id="@+id/sinewave"
         android:layout_width="39dp"
         android:layout_height="39dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="108dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:scaleX="1.2"
-        app:layout_constraintStart_toEndOf="@+id/goalLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.536"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/display"
+        android:visibility="gone"
         app:srcCompat="@drawable/wave" />
 
     <Button
