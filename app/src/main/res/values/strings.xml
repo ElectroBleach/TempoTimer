@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">TempoTimer</string>
-    <string name="title_activity_main_menu">mainMenu</string>
-    <string name="title_activity_test">testActiv</string>
-    <string name="tobugtracker">
-        <a href="http://ec2-13-58-202-28.us-east-2.compute.amazonaws.com:8080/">Report bugs HERE.</a>
-    </string>
+    <drawable name="home_icon"></drawable>
+    <string name="app_name">Tempo\nTimer</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_3">Tab 3</string>
+    <string name="tab_text_4">Tab 4</string>
 
     <string-array name="course">
         <item>Course↓</item>
@@ -22,6 +22,7 @@
     </string-array>
     <string-array name="raceLengthY">
         <item>Length↓</item>
+        <item>50</item>
         <item>100</item>
         <item>200</item>
         <item>500</item>
@@ -43,4 +44,5 @@
     <string-array name="courseDefault">
         <item>Length</item>
     </string-array>
+
 </resources>

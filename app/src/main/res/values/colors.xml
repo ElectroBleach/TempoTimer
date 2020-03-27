@@ -6,7 +6,7 @@
     <color name="dark_maroon"> #5d0829 </color>
     <color name="soft_red"> #ff2c49 </color>
     <color name="button_gray">#212121</color>
-    <color name="light_gray">#f2f2f2</color>
+    <color name="light_gray">#DFDFDF</color>
     <color name="transparent">#00000000</color>
     <color name="startbtn">#45b4ad</color>
     <color name="pausebtn">#f3c42e</color>
@@ -17,6 +17,10 @@
     <color name="punctuation">#5a5a5a</color>
     <color name="peach">#b7d1eb</color>
     <color name="bubblecolor">#f2f2f2</color>
+    <color name="texthint">#D1D1D1</color>
+    <color name="barcolor">#ECECEC</color>
+    <color name="starting">#AAAAAA</color>
 
-
+    <color name="windowBackground">#FFFFFF</color>
+    <color name="navigationBarColor">#000000</color>
 </resources>

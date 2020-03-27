@@ -1,116 +1,82 @@
 package com.bdatsko.tempotimer;
 
+import android.content.res.Configuration;
+import android.os.Bundle;
+
+import com.bdatsko.tempotimer.ui.main.settings;
+import com.bdatsko.tempotimer.ui.main.tt;
+import com.google.android.material.tabs.TabLayout;
+
+import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.SystemClock;
-import android.view.View;
+import android.util.DisplayMetrics;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
-import java.text.DecimalFormat;
+import com.bdatsko.tempotimer.ui.main.SectionsPagerAdapter;
 
-public class MainActivity extends Activity {
-    TextView display;
-    Button start,pause,reset, back;
-    long milli, startTime, timeBuff, updateTime = 0L, pauseOffset;
-    int seconds, minutes, milliseconds;
-    Handler handler;
+public class MainActivity extends AppCompatActivity implements settings.SendMessage {
+
+    EditText funny;
+    TextView screenSize;
+    String getScreenDimensions;
+
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        handler = new Handler();
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        display = (TextView) findViewById(R.id.display);
-        start = (Button) findViewById(R.id.startbtn);
-        pause = (Button) findViewById(R.id.pausebtn);
-        reset = (Button) findViewById(R.id.resetbtn);
-        back = (Button) findViewById(R.id.backButtonSW);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main_test);
+        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
+        ViewPager viewPager = findViewById(R.id.view_pager);
+        viewPager.setAdapter(sectionsPagerAdapter);
+        TabLayout tabs = findViewById(R.id.tabs);
+        viewPager.setOffscreenPageLimit(2);
+        tabs.setupWithViewPager(viewPager);
 
 
+        funny = findViewById(R.id.funnyEdit);
+        screenSize = findViewById(R.id.screenSize);
 
+        /*
+        //DETERMINE SCREEN SIZE FOR DEBUGGING PURPOSES.
+        if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE) {
+            getScreenDimensions = "LargeScreen";
+        }
 
-        start.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_NORMAL) {
+            getScreenDimensions = "MediumScreen";
+        }
 
-                startTime = SystemClock.uptimeMillis();
-                handler.postDelayed(runnable, 0);
-                reset.setEnabled(false);
-            }
-        });
+        if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_SMALL) {
+            getScreenDimensions = "SmallScreen";
+        }
 
-        pause.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                pause.setEnabled(false);
-                start.setEnabled(true);
-                timeBuff += milli;
-                handler.removeCallbacks(runnable);
-                reset.setEnabled(true);
-            }
-        });
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        float density = metrics.density;
+        float dpWidth = metrics.widthPixels / density;
+        float dpHeight = metrics.heightPixels / density;
 
-        reset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                milli = 0L;
-                startTime = 0;
-                timeBuff = 0;
-                updateTime = 0;
-                seconds = 0;
-                minutes = 0;
-                milliseconds = 0;
-                display.setText("00:00:00");
-            }
-        });
+        screenSize.setText(getScreenDimensions + "with density of " + metrics.densityDpi + "with a is a multiplier of " + density + "width of " + dpWidth + "dp, height of " + dpHeight);
+        */
+    }
+    @Override
+    public void sendData(String message) {
+        //String tag = "android:switcher:" + R.id.view_pager + ":" + 1;
+        //tt f = (tt) getSupportFragmentManager().findFragmentByTag(tag);
+        //f.displayReceivedData(message);
+        funny.setText(message);
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent backHome = new Intent(getApplicationContext(), menuMain.class);
-                startActivity(backHome);
-            }
-        });
     }
 
-    public Runnable runnable = new Runnable() {
-        public void run() {
-            pause.setEnabled(true);
-            start.setEnabled(false);
-            milli = SystemClock.uptimeMillis() - startTime;
-            updateTime = timeBuff + milli;
-            seconds = (int) (updateTime/1000);
-            minutes = seconds/60;
-            seconds = seconds % 60;
-            milliseconds = (int) (updateTime%1000)/10;
-            display.setText(minutes + ":" + seconds + "." + milliseconds);
-            if(minutes>=1 && seconds<=10) {
-                display.setText(minutes + ":" + "0" + seconds + "." + milliseconds);
-            }
-            if(minutes<1 && seconds<=10) {
-                display.setText("0" + seconds + "." + milliseconds);
-            }
-            if(minutes<1 && seconds>=10) {
-                display.setText(+ seconds + "." + milliseconds);
-            }
 
-            handler.postDelayed(this, 0);
-         }
-     };
-
-    public void onBackPressed() {
-        Intent home = new Intent(this,menuMain.class);
-        startActivity(home);
-    }
 }
+
+
+
